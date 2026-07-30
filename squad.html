@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B360 — Squad Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #12141C;
+    --panel: #1B1F2A;
+    --line: #2C3140;
+    --paper: #F4F3F0;
+    --muted: #9AA0AE;
+    --orange: #E8622C;
+    --gold: #D9A441;
+    --pitch: #171A22;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{background:var(--bg); color:var(--paper);}
+  body{font-family:'Inter',sans-serif; display:flex; justify-content:center; padding:28px 16px;}
+  .page{width:100%; max-width:640px;}
+  h1,.eyebrow{font-family:'Barlow Condensed',sans-serif; text-transform:uppercase;}
+  .eyebrow{letter-spacing:0.18em; font-size:11px; font-weight:600; color:var(--orange);}
+
+  .header{display:flex; justify-content:space-between; align-items:flex-end; padding-bottom:16px; border-bottom:2px solid var(--orange); margin-bottom:20px;}
+  .wordmark{font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:38px;}
+  .wordmark span{color:var(--orange);}
+  .tagline{font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); text-align:right;}
+
+  .intro{font-size:13px; color:var(--muted); line-height:1.6; margin-bottom:20px;}
+
+  .pitch{
+    background:var(--pitch);
+    border:2px solid var(--orange);
+    border-radius:6px;
+    padding:22px 12px;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .pitch::before{
+    content:"";
+    position:absolute;
+    left:50%; top:50%; transform:translate(-50%,-50%);
+    width:90px; height:90px; border:2px solid rgba(232,98,44,0.35);
+    border-radius:50%;
+  }
+  .pitch::after{
+    content:"";
+    position:absolute;
+    left:0; right:0; top:50%;
+    border-top:2px solid rgba(232,98,44,0.35);
+  }
+
+  .row{display:flex; justify-content:center; gap:10px; position:relative; z-index:1;}
+  .row.gk{justify-content:center;}
+
+  .row-edge{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    align-items:start;
+    position:relative;
+    z-index:1;
+  }
+  .row-edge .col-left{justify-self:start;}
+  .row-edge .col-center{justify-self:center;}
+  .row-edge .col-right{justify-self:center;}
+
+  .slot{display:flex; flex-direction:column; gap:4px; align-items:center;}
+  .col-left .slot{align-items:flex-start;}
+
+  .card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:5px;
+    padding:7px 10px;
+    text-decoration:none;
+    color:var(--paper);
+    min-width:118px;
+    text-align:left;
+    transition:border-color .15s;
+  }
+  .card:hover{border-color:var(--orange);}
+  .card .nm{font-family:'Barlow Condensed',sans-serif; font-size:14px; font-weight:700; line-height:1.15;}
+  .card .meta{font-size:9.5px; color:var(--muted); margin-top:1px;}
+  .card .pos{
+    display:inline-block;
+    font-size:8.5px; font-weight:700; color:var(--orange);
+    letter-spacing:0.03em;
+  }
+  .card .tag{font-size:9px; color:var(--gold); margin-top:2px; font-weight:600;}
+  .card.stacked{margin-top:4px;}
+
+  .legend{
+    margin-top:14px; font-size:10.5px; color:var(--muted); text-align:center;
+  }
+
+  .footer{margin-top:26px; padding-top:14px; border-top:1px solid var(--line); font-size:10.5px; color:var(--muted); display:flex; justify-content:space-between;}
+  .footer .claim{color:var(--gold); font-weight:600; letter-spacing:0.03em; text-transform:uppercase; font-size:10.5px;}
+
+  @media (max-width:480px){
+    .card{min-width:96px; padding:6px 8px;}
+    .card .nm{font-size:12.5px;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="wordmark">B<span>360</span></div>
+    <div class="tagline">Squad Board<br>Madrid 2026</div>
+  </div>
+
+  <div class="intro">Players we're actively placing right now. Tap a name for the full profile.</div>
+
+  <div class="pitch">
+
+    <div class="row">
+      <div class="slot">
+        <a class="card" href="Imad_Rondic.pdf"><span class="pos">ST</span><div class="nm">Imad Rondi&#263;</div><div class="meta">Age 27</div><div class="tag">The Complete Reference Striker</div></a>
+      </div>
+    </div>
+
+    <div class="row-edge">
+      <div class="col-left">
+        <div class="slot">
+          <a class="card" href="Marko_Brest.pdf"><span class="pos">LW</span><div class="nm">Marko Brest</div><div class="meta">Age 24</div><div class="tag">The Momentum Creator</div></a>
+          <a class="card stacked" href="Georg_Ermolaev.pdf"><span class="pos">LW</span><div class="nm">Georg Ermolaev</div><div class="meta">Age 20</div><div class="tag">The Pressing Specialist</div></a>
+          <a class="card stacked" href="Patrick_Sussek.pdf"><span class="pos">LW</span><div class="nm">Patrick Sussek</div><div class="meta">Age 26</div><div class="tag">The Transition Amplifier</div></a>
+        </div>
+      </div>
+      <div class="col-center">
+        <div class="slot">
+          <a class="card" href="Adrian_Beck.pdf"><span class="pos">CAM</span><div class="nm">Adrian Beck</div><div class="meta">Age 29</div><div class="tag">The Space Creator</div></a>
+        </div>
+      </div>
+      <div class="col-right"></div>
+    </div>
+
+    <div class="row">
+      <div class="slot">
+        <a class="card" href="Gabriel_Europaeus.pdf"><span class="pos">DM</span><div class="nm">Gabriel Europaeus</div><div class="meta">Age 21</div><div class="tag">The Defensive Connector</div></a>
+      </div>
+      <div class="slot">
+        <a class="card" href="Matias_Siltanen.pdf"><span class="pos">CM</span><div class="nm">Matias Siltanen</div><div class="meta">Age 19</div><div class="tag">The Transition Stabiliser</div></a>
+      </div>
+    </div>
+
+    <div class="row-edge">
+      <div class="col-left">
+        <div class="slot">
+          <a class="card" href="Gian-Luca_Itter.pdf"><span class="pos">LB</span><div class="nm">Gian-Luca Itter</div><div class="meta">Age 27</div><div class="tag">The Pressure-Release Valve</div></a>
+          <a class="card stacked" href="Jost_Urbancic.pdf"><span class="pos">LB</span><div class="nm">Jo&#353;t Urban&#269;i&#269;</div><div class="meta">Age 25</div><div class="tag">The Two-Way Engine</div></a>
+        </div>
+      </div>
+      <div class="col-center">
+        <div class="slot">
+          <a class="card" href="Tristan_Zobel.pdf"><span class="pos">CB</span><div class="nm">Tristan Zobel</div><div class="meta">Age 22</div><div class="tag">The Composure Anchor</div></a>
+        </div>
+      </div>
+      <div class="col-right">
+        <div class="slot">
+          <a class="card" href="Tony_Miettinen.pdf"><span class="pos">CB</span><div class="nm">Tony Miettinen</div><div class="meta">Age 23</div><div class="tag">The Possession Winner</div></a>
+          <a class="card stacked" href="David_Schopper.pdf"><span class="pos">CB</span><div class="nm">David Schopper</div><div class="meta">Age 21</div><div class="tag">The First-Phase Controller</div></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row gk">
+      <div class="slot">
+        <a class="card" href="Jan_Olschowsky.pdf"><span class="pos">GK</span><div class="nm">Jan Olschowski</div><div class="meta">Age 24</div><div class="tag">The Build-Up Goalkeeper</div></a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="legend">4-2-3-1 &middot; stacked cards = alternate options for that role</div>
+
+  <div class="footer">
+    <div class="claim">Every recommendation has a reason.</div>
+    <div>B360</div>
+  </div>
+
+</div>
+</body>
+</html>
